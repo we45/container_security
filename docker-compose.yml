@@ -14,7 +14,7 @@ services:
       - MONGO_IP=mongo_db
       - MYSQL_IP=mysql_db
       - MYSQL_USER=root
-      - MYSQL_PASSWORD=hegemony86
+      - MYSQL_PASSWORD=SecretPWD
       - MYSQL_DATABASE=expenses
     expose:
       - "3000"
@@ -36,7 +36,7 @@ services:
     image: nithinwe45/ctf_mysql:latest
     environment:
       - MYSQL_DATABASE=expenses
-      - MYSQL_ROOT_PASSWORD=hegemony86
+      - MYSQL_ROOT_PASSWORD=SecretPWD
     expose:
       - "3306"
     ports:
