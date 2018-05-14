@@ -1,0 +1,43 @@
+version: "3"
+services:
+  ctf_frontend:
+    image: nithinwe45/ctf_frontend:latest
+    environment:
+      - CTF_NODEJS_IP=ctf_nodejs
+    expose:
+      - "5000"
+    ports:
+      - "5000:5000"
+  ctf_nodejs:
+    image: nithinwe45/ctf_nodejs:latest
+    environment:
+      - MONGO_IP=mongo_db
+      - MYSQL_IP=mysql_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=hegemony86
+      - MYSQL_DATABASE=expenses
+    expose:
+      - "3000"
+      - "9001"
+    ports:
+      - "3000:3000"
+      - "9001:9001"
+    command: sh -c "/wait-for mongo_db:27017 -- pm2 start --no-daemon ./bin/www && frontail /app/cut_log.log"
+    depends_on:
+      - mongo_db
+      - mysql_db
+  mongo_db:
+    image: nithinwe45/ctf_mongo:latest
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"
+  mysql_db:
+    image: nithinwe45/ctf_mysql:latest
+    environment:
+      - MYSQL_DATABASE=expenses
+      - MYSQL_ROOT_PASSWORD=hegemony86
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
