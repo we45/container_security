@@ -8,7 +8,7 @@
 * nithinwe45/ctf_frontend
 * nithinwe45/ctf_mongo
 * nithinwe45/ctf_mysql
-* sharathwe45/vul-node-docker
+* sharathwe45/shellshock
 * ubuntu:16.04
 
 **  	You can pull these images and keep them ready if necessary.
